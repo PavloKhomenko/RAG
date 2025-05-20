@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+# Virtual environments
+venv/
+env/
+.venv/
+ENV/
+env.bak/
+venv311/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# VS Code
+.vscode/
+
+# macOS
+.DS_Store
+
+# Environment variables and secrets
+.env
+*.env
+
+# Data, logs, and cache
+*.log
+*.sqlite3
+*.db
+*.cache/
+.cache/
+*.bak
+*.tmp
+
+# Images and scraped data
+images/
+
+# Qdrant local data (if any)
+qdrant_storage/
