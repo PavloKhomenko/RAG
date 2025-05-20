@@ -4,7 +4,7 @@ from datasets import Dataset
 from ragas import evaluate
 from ragas.metrics import faithfulness, context_precision, answer_relevancy
 
-llm = ChatOpenAI(model="gpt-4o-mini", temperature=0)
+llm = ChatOpenAI(model="gpt-4o", temperature=0)
 
 def load_dataset(path):
     with open(path, "r", encoding="utf-8") as f:
@@ -18,12 +18,15 @@ def main():
     print("📊 Evaluating RAG quality with RAGAS...")
     results = evaluate(
         dataset=dataset,
-        metrics=[faithfulness, answer_relevancy],
+        metrics=[faithfulness, answer_relevancy, context_precision],
         llm=llm
     )
 
-    print("\n🧠 RAG Evaluation Results:")
-    print(results.to_pandas())
+    df = results.to_pandas()
+    print("\n🔬 Evaluation Metrics:")
+    for metric, value in df.iloc[0].items():
+        print(f"{metric}: {value}")
+
 
 if __name__ == "__main__":
     main()

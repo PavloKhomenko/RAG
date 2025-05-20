@@ -67,8 +67,6 @@ if st.button("Search") and query:
                 url = article.get("url", None)
                 if url:
                     st.markdown(f"- [{title}]({url})")
-else:
-    st.info("Enter a query and click 'Search' to see results.")
 
 if st.button("Scrape Articles"):
     with st.spinner("Scraping articles..."):
@@ -78,7 +76,3 @@ if st.button("Scrape Articles"):
 if st.button("Clear Chat History"):
     vector_memory.clear()
     st.success("Chat history cleared!")
-
-        #TODO: Add README
-        #TODO: Provide documentation
-        #TODO: Add demo

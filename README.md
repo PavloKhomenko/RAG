@@ -20,7 +20,7 @@ This project is a Multimodal Retrieval-Augmented Generation (RAG) system built w
 1. **User Input**: A question is submitted via Streamlit.
 2. **Text Embedding**: The question is embedded using CLIP (ViT-B-32).
 3. **Vector Search**: Contextual chunks and image embeddings are retrieved from Qdrant.
-4. **LLM Generation**: The query and context are passed to an OpenAI LLM (GPT-4o-mini).
+4. **LLM Generation**: The query and context are passed to an OpenAI LLM (GPT-4o).
 5. **Response Display**: The answer is shown alongside relevant images and article sources.
 
 ---
@@ -29,7 +29,7 @@ This project is a Multimodal Retrieval-Augmented Generation (RAG) system built w
 
 | Component       | Tool/Library            | Reason for Selection                     |
 | --------------- | ----------------------- | ---------------------------------------- |
-| LLM             | OpenAI GPT-4o-mini      | High-quality natural language generation |
+| LLM             | OpenAI GPT-4o           | High-quality natural language generation |
 | Text Embedding  | open-clip (ViT-B-32)    | Shared space for text & images           |
 | Image Embedding | open-clip (ViT-B-32)    | Unified vision-language embedding        |
 | Vector Storage  | Qdrant                  | Fast vector DB with payload filtering    |

@@ -15,16 +15,20 @@ class TextEmbedder:
 
     def embed(self, texts):
         """
-        Embed a list of texts into vectors using CLIP.
-
-        Args:
-            texts (list of str): The texts to embed.
-
-        Returns:
-            np.ndarray: The embeddings as a 2D numpy array.
+        Embed a single text or list of texts.
+        Returns 1D numpy array for single input, 2D for list.
         """
+        single_input = isinstance(texts, str)
+
+        if single_input:
+            texts = [texts]
+
         with torch.no_grad():
             tokens = self.tokenizer(texts).to(self.device)
             embeddings = self.model.encode_text(tokens)
             embeddings = embeddings.cpu().numpy()
+
+        if single_input:
+            return embeddings[0]  
+
         return embeddings
