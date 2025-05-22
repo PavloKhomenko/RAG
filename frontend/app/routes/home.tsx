@@ -1,5 +1,5 @@
-// frontend/app/routes/query.tsx
 import React, { useState } from 'react';
+import Spinner from '../components/Spinner';
 
 function QueryPage() {
   const [query, setQuery] = useState('');
@@ -77,7 +77,7 @@ function QueryPage() {
           style={{ flex: 1, padding: '0.5rem' }}
         />
         <button onClick={handleSearch} disabled={loading}>
-          {loading ? 'Searching...' : 'Search'}
+          {loading ? 'Processing...' : 'Search'}
         </button>
       </div>
 
@@ -85,6 +85,7 @@ function QueryPage() {
         <button onClick={handleScrape} disabled={loading}>Scrape Articles</button>
         <button onClick={handleClearHistory} disabled={loading}>Clear Chat History</button>
       </div>
+      {loading && <Spinner />}
 
       {answer && (
         <div>
@@ -102,7 +103,7 @@ function QueryPage() {
                 key={index}
                 src={img.image_url || img.local_path}
                 alt={img.caption || 'Relevant image'}
-                style={{ width: '200px', borderRadius: '8px' }}
+                style={{ width: '300px', borderRadius: '8px' }}
               />
             ))}
           </div>
