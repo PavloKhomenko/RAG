@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Spinner from '../components/Spinner';
+import toast, { Toaster } from "react-hot-toast";
 
-// Add this import for markdown rendering
 import ReactMarkdown from 'react-markdown';
 
 function QueryPage() {
@@ -44,9 +44,10 @@ function QueryPage() {
         method: 'POST'
       });
       const data = await res.json();
-      alert(data.detail || 'Scraping complete');
+      toast.success("Articles scraped!");
     } catch (error) {
       console.error('Failed to scrape articles:', error);
+      toast.error("Failed to scrape articles.");
     } finally {
       setLoading(false);
     }
@@ -59,9 +60,10 @@ function QueryPage() {
         method: 'POST'
       });
       const data = await res.json();
-      alert(data.detail || 'Chat history cleared');
+      toast.success("Chat history cleared!");
     } catch (error) {
       console.error('Failed to clear history:', error);
+      toast.error("Failed to clear history.");
     } finally {
       setLoading(false);
     }
@@ -70,7 +72,7 @@ function QueryPage() {
   return (
     <div style={{ padding: '2rem', maxWidth: '800px', margin: 'auto' }}>
       <h1>Multimodal RAG Assistant</h1>
-
+      <Toaster /> 
       <div style={{ display: 'flex', gap: '1rem', marginBottom: '1rem' }}>
         <input
           type="text"
@@ -93,7 +95,6 @@ function QueryPage() {
       {answer && (
         <div>
           <h2>💬 Answer</h2>
-          {/* Render answer as markdown */}
           <ReactMarkdown>{answer}</ReactMarkdown>
         </div>
       )}
