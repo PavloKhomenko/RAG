@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Spinner from '../components/Spinner';
 import toast, { Toaster } from "react-hot-toast";
-
 import ReactMarkdown from 'react-markdown';
 
 function QueryPage() {
