@@ -1,5 +1,5 @@
 from qdrant_client import QdrantClient
-from qdrant_client.http.models import PointStruct, VectorParams, Distance, Filter, FieldCondition, MatchValue
+from qdrant_client.http.models import PointStruct, VectorParams, Distance, Filter, FieldCondition, MatchValue, FilterSelector
 from typing import Optional, List, Union
 from uuid import uuid4
 import datetime
@@ -100,7 +100,7 @@ class VectorDB:
         )
         self.client.delete(
             collection_name=self.collection_name,
-            points_selector={"filter": filter_}
+            points_selector=FilterSelector(filter=filter_)
         )
 
     def close(self):

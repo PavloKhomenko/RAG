@@ -40,3 +40,11 @@ images/
 
 # Qdrant local data (if any)
 qdrant_storage/
+
+.DS_Store
+/node_modules/
+
+# React Router
+frontend/.react-router/
+frontend/build/
+frontend/node_modules/
