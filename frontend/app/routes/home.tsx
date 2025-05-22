@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Spinner from '../components/Spinner';
 import toast, { Toaster } from "react-hot-toast";
 
@@ -10,6 +10,20 @@ function QueryPage() {
   const [images, setImages] = useState<any[]>([]);
   const [sources, setSources] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    const checkHealth = async () => {
+      try {
+        const res = await fetch('http://localhost:8000/api/health');
+        if (!res.ok) throw new Error('API not healthy');
+        const data = await res.json();
+        if (data.status !== 'ok') throw new Error('API not healthy');
+      } catch (error) {
+        toast.error("Backend API is unavailable.");
+      }
+    };
+    checkHealth();
+  }, []);
 
   const handleSearch = async () => {
     if (!query.trim()) return;
