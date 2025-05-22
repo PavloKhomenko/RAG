@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import Spinner from '../components/Spinner';
 
+// Add this import for markdown rendering
+import ReactMarkdown from 'react-markdown';
+
 function QueryPage() {
   const [query, setQuery] = useState('');
   const [answer, setAnswer] = useState('');
@@ -90,7 +93,8 @@ function QueryPage() {
       {answer && (
         <div>
           <h2>💬 Answer</h2>
-          <p>{answer}</p>
+          {/* Render answer as markdown */}
+          <ReactMarkdown>{answer}</ReactMarkdown>
         </div>
       )}
 
